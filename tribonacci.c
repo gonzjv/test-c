@@ -21,6 +21,9 @@ long long *tribonacci(const long long signature[3], size_t n)
     long long *resultArr = malloc(8 * n);
     size_t i = 0;
 
+    if (n == 0)
+        return NULL;
+
     while (i < n)
     {
         resultArr[i] = getTribonacci(signature, i);
@@ -36,15 +39,24 @@ void main()
     printf("main starts HERE \n");
     printf("\n");
 
-    const long long sign[] = {5, 1, 1};
+    size_t i = 0;
+    size_t n = 10;
 
-    long long *ptr = tribonacci(sign, 5);
-    printf("zero elem: %lld  \n", ptr[0]);
-    printf("1 elem: %lld  \n", ptr[1]);
-    printf("2 elem: %lld  \n", ptr[2]);
-    printf("3 elem: %lld  \n", ptr[3]);
-    printf("4 elem: %lld  \n", ptr[4]);
-    printf("ptr addr: %p  \n", ptr);
+    const long long sign[] = {1, 1, 1};
+
+    long long *ptr = tribonacci(sign, n);
+
+    while (i < n)
+    {
+        printf("Arr elem: %lld  \n", ptr[i]);
+        i++;
+    }
+
+    //     printf("zero elem: %lld  \n", ptr[0]);
+    // printf("2 elem: %lld  \n", ptr[2]);
+    // printf("3 elem: %lld  \n", ptr[3]);
+    // printf("4 elem: %lld  \n", ptr[4]);
+    // printf("ptr addr: %p  \n", ptr);
 
     printf("result addr: %p  \n", tribonacci(sign, 5));
     // printf("result is %lln  \n", tribonacci(sign, 5));
