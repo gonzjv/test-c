@@ -1,2 +1,2 @@
-            printf("tail inside %c\n", *tail);
-            printf("token inside %c\n", *token);
+        printf("token bottom %s\n", token);
+        printf("result at bottom %s\n", result);

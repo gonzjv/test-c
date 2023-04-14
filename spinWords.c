@@ -5,41 +5,45 @@
 
 void spin_words(const char *sentence, char *result)
 {
-    // result[0] = sentence[0];
     char *token = strtok(sentence, " ");
-    char *tail, h, t;
-    printf("sentence init %s\n", sentence);
+    char *tail, SPACE = ' ';
+    result[0] = '\0';
+    // memset(result, 0, sizeof(result));
+
     while (token != NULL)
     {
         printf("token at top %s\n", token);
 
-        tail = token;
-        // printf("tail %s\n", tail);
-        while (*tail)
-            ++tail;
-        --tail;
-
-        while (token < tail)
+        if (strlen(token) < 5)
+        {
+            strcat(result, token);
+            strncat(result, &SPACE, 1);
+        }
+        else
         {
 
-            h = *token;
-            t = *tail;
-            *token = t;
-            *tail = h;
-
-            printf("tail inside %c\n", *tail);
-            printf("token inside %c\n", *token);
-            printf("sentence inside %s\n", sentence);
-
-            ++token;
+            tail = token;
+            while (*tail)
+                ++tail;
             --tail;
-            /* code */
+
+            while (token <= tail)
+            {
+                strncat(result, tail, 1);
+                token == tail && (strncat(result, &SPACE, 1));
+
+                // printf("tail inside %s\n", tail);
+                // printf("result inside %s\n", result);
+                --tail;
+            }
         }
 
         token = strtok(NULL, " ");
-        printf("token bottom %s\n", token);
+        // printf("token bottom %s\n", token);
+        // printf("result at bottom %s\n", result);
     }
-    printf("after %s\n", sentence);
+    result[strlen(result) - 1] = '\0';
+    // printf("after %s\n", sentence);
 }
 
 void main()
@@ -47,12 +51,18 @@ void main()
     printf("main starts HERE \n");
 
     // const int arr[] = {5, 8, 12, 19, 22};
-    char fewWords[] = "seven eight nine";
+    char fewWords[] = "seven";
+    char fewWords2[] = "seven qwerty asdfgh";
+    char fewWords3[] = "hi fellow. How are you?";
     char res[128];
 
     spin_words(fewWords, res);
+    spin_words(fewWords2, res);
+    spin_words(fewWords3, res);
 
-    printf("words after %s\n", fewWords);
+    // printf("words after %s\n", fewWords);
+    printf("%s\n", "------");
+    printf("res after _%s_\n", res);
     // printf("result is %s  \n", res);
     // printf("result is %d yeeee \n", num);
     printf("main finish HERE \n");
