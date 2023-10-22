@@ -1,2 +1,4 @@
-        printf("token bottom %s\n", token);
-        printf("result at bottom %s\n", result);
+static float Abs(float a)
+{
+    return a < 0 ? -a : a;
+}
