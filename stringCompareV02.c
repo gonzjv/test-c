@@ -9,6 +9,10 @@ int StringCompare(const char *str1, const char *str2)
     while (*str1 == *str2 && *str1 != '\0')
     {
         printf("pointer1 %c \n", *str1);
+        printf("pointer1 +1  %c \n", *(str1 + 1));
+        printf("pointer1 addr  %d \n", str1);
+        printf("pointer1 addr +1  %d \n", str1 + 1);
+
         str1++;
         str2++;
     }
